@@ -31,12 +31,12 @@ class App extends React.Component {
     }
 
     var newAverage = (totalSum / allGrade.length).toFixed(2) + '%';
-    this.setState({ average: newAverage });
+    return newAverage;
   }
   render() {
     return (
       <div>
-        <Header newAverage= {this.state.average}></Header>
+        <Header newAverage= {this.getAverageGrade()} />
         <GradeTable grade= {this.state.grade}/>
       </div>
     );

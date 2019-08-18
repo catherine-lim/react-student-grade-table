@@ -7,22 +7,37 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grade: []
-
+      grade: [],
+      average: 0
     };
+
   }
+
   componentDidMount() {
     fetch(`/api/grades`)
       .then(response => response.json())
-      .then(data => this.setState({ grade: data }));
-  }
+      .then(data => {
+        this.setState({ grade: data });
+        this.getAverageGrade();
+      });
 
+  }
+  getAverageGrade() {
+    var totalSum = 0;
+    var allGrade = this.state.grade;
+
+    for (var i = 0; i < allGrade.length; i++) {
+      totalSum += allGrade[i].grade;
+    }
+
+    var newAverage = (totalSum / allGrade.length).toFixed(2) + '%';
+    return newAverage;
+  }
   render() {
     return (
       <div>
-        <Header></Header>
+        <Header newAverage= {this.getAverageGrade()} />
         <GradeTable grade= {this.state.grade}/>
-
       </div>
     );
   }

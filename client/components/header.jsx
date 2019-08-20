@@ -5,7 +5,7 @@ function Header(props) {
   return (
     <div>
       <h1 className="text-warning"> Student Grade Table</h1>
-      <h5>Average <span className="badge badge-secondary"> {props.newAverage}</span></h5>
+      <span>Average <span className="badge badge-secondary"> {props.newAverage}</span></span>
     </div>
   );
 

@@ -2,6 +2,10 @@
     font-family: "Comic Sans MS", cursive, sans-serif;
     padding: 50px;
 }
-h5{
+
+span{
     float: right;
+}
+table{
+    float: left;
 }

@@ -21,7 +21,6 @@ class App extends React.Component {
       .then(data => {
         this.setState({ grade: data });
         this.getAverageGrade();
-
       });
   }
   addStudent(newgrade) {
@@ -31,7 +30,7 @@ class App extends React.Component {
       body: JSON.stringify(newgrade)
     })
       .then(response => response.json())
-      .then(newgrade => this.setState({ grade: this.setState.grade.concat(newgrade) }));
+      .then(newgrade => this.setState({ grade: this.state.grade.concat(newgrade) }));
 
   }
 
@@ -51,7 +50,7 @@ class App extends React.Component {
       <div>
         <Header newAverage= {this.getAverageGrade()} />
         <GradeTable grade= {this.state.grade}/>
-        <GradeForm onSubmit={this.addStudent}/>
+        <GradeForm onClick={this.addStudent}/>
       </div>
     );
   }

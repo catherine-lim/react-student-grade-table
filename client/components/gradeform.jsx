@@ -16,15 +16,25 @@ class GradeForm extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    const newgrade = {
+      name: this.state.name,
+      course: this.state.course,
+      grade: this.state.grade
+    };
+    this.props.onClick(newgrade);
+    this.resetForm();
 
   }
   handleChangeName(event) {
+
     this.setState({ name: event.target.value });
   }
   handleChangeCourse(event) {
+
     this.setState({ course: event.target.value });
   }
   handleChangeGrade(event) {
+
     this.setState({ grade: event.target.value });
   }
   resetForm(event) {
@@ -42,17 +52,17 @@ class GradeForm extends React.Component {
         <label>
           <form onSubmit={this.handleSubmit}>
             <i className="fas fa-user"> </i>
-            <input type="name" placeholder="Name" value={this.state.name} onChange={this.handleChangeName} />
+            <input type="name" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChangeName} />
           </form>
 
           <form>
             <i className="fas fa-clipboard-list"></i>
-            <input type="text" placeholder="Course" value={this.state.course} onChange={this.handleChangeCourse} />
+            <input type="text" name="course" placeholder="Course" value={this.state.course} onChange={this.handleChangeCourse} />
           </form>
 
           <form>
             <i className="fas fa-graduation-cap"></i>
-            <input type="text" placeholder="Grade" value={this.state.grade} onChange={this.handleChangeGrade} />
+            <input type="number" name="grade" placeholder="Grade" value={this.state.grade} onChange={this.handleChangeGrade} />
           </form>
         </label>
         <br></br>
